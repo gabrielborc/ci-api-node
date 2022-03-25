@@ -26,7 +26,7 @@ jobs:
       - name: Check outdated dependencies
         continue-on-error: true
         run: npm outdated
-  build-test:
+  build-test-reports:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,7 +39,14 @@ jobs:
       - name: Build 
         run: npm run build
       - name: Run tests
-        run: npm test
+        run: npm run test:ci
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
 
 
       
