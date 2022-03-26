@@ -63,6 +63,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gabrielborc/ci-go-fc:latest
+          tags: gabrielborc/ci-api-node:latest
 
       
